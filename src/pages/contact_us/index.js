@@ -4,23 +4,26 @@ import { StickyProvider } from '../../contexts/app/app.provider';
 import theme from 'theme';
 import SEO from '../../components/seo';
 import Layout from '../../components/layout';
-import Contact from '../../sections/contact_us';
+import ContactForm from '../../sections/contact_us';
 import Filler from '../../sections/filler';
+import FillerBackground from '../../sections/filler-background';
 
 
-function contact_us() {
+import KeyFeature from '../../sections/key-feature';
+import ServiceSection from '../../sections/service-section';
+import Feature from '../../sections/feature';
+
+
+export default function ContactUs() {
   return (
     <ThemeProvider theme={theme}>
       <StickyProvider>
         <Layout>
           <SEO title="WebGuru Transformations" />
           <Filler />
-          <Contact />
-          
+          <ContactForm />
         </Layout>
       </StickyProvider>
     </ThemeProvider>
   );
 }
-
-export default contact_us

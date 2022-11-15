@@ -7,12 +7,18 @@ import BannerImg from 'assets/banner-thumb.png';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 
-function contact_us() {
+export default function ContactForm() {
   return (
     <section sx={styles.contact_us} id="contact-us">
       <Container sx={styles.contact_us.container}>
         <Box sx={styles.contact_us.contentBox}>
-            <Contact/>
+          <Heading as="h1" variant="heroPrimary">
+            Reach Out
+          </Heading>
+          <Text as="p" variant="heroSecondary">
+            Don't like forms? Send us an <Link href="mailto:info@webguru.ca">email</Link>
+          </Text>
+          <Contact/>
         </Box>
       </Container>
     </section>
@@ -74,5 +80,3 @@ const styles = {
         },
       },
   };
-
-export default contact_us

@@ -6,22 +6,22 @@ import BannerImg from 'assets/banner-thumb.png';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 
-export default function Filler() {
+export default function FillerBackground() {
   return (
-    <section sx={styles.filler} id="filler">
-      {/* <Container sx={styles.filler.container}>
-        <Box sx={styles.filler.contentBox}>
-          <Heading as="h1" variant="heroPrimary">
-            Reach Out
-          </Heading>
+    <section sx={styles.filler_background} id="filler">
+      <Container sx={styles.filler_background.container}>
+        <Box sx={styles.filler_background.contentBox}>
+          {/* <Heading as="h1" variant="heroPrimary">
+            
+          </Heading> */}
         </Box>
-      </Container> */}
+      </Container>
     </section>
   );
 }
 
 const styles = {
-  filler: {
+  filler_background: {
     pt: ['140px', '145px', '155px', '170px', null, null, '180px', '215px'],
     pb: [2, null, 0, null, 2, 0, null, 5],
     position: 'relative',
@@ -34,7 +34,7 @@ const styles = {
       height: '100%',
       width: '100%',
       zIndex: -1,
-      // backgroundImage: `url(${ShapeLeft})`,
+      backgroundImage: `url(${ShapeLeft})`,
       backgroundRepeat: `no-repeat`,
       backgroundPosition: 'bottom left',
       backgroundSize: '36%',
@@ -47,7 +47,7 @@ const styles = {
       height: '100%',
       width: '100%',
       zIndex: -1,
-      // backgroundImage: `url(${ShapeRight})`,
+      backgroundImage: `url(${ShapeRight})`,
       backgroundRepeat: `no-repeat`,
       backgroundPosition: 'bottom right',
       backgroundSize: '32%',
