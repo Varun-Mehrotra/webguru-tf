@@ -16,7 +16,7 @@ export default function ContactForm() {
             Reach Out
           </Heading>
           <Text as="p" variant="heroSecondary">
-            Don't like forms? Send us an <Link href="mailto:info@webguru.ca">email</Link>
+            Don't like forms? Send us an <Link> email </Link>
           </Text>
           <Contact/>
         </Box>
