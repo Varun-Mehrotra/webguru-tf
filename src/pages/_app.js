@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import Router from 'next/router';
 import { initGA, logPageView } from 'analytics';
-import 'react-multi-carousel/lib/styles.css';
-import 'react-modal-video/css/modal-video.min.css';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'swiper/swiper-bundle.min.css';
 import 'rc-drawer/assets/index.css';
+import 'react-modal-video/css/modal-video.min.css';
 import 'typeface-dm-sans';
 
 export default function CustomApp({ Component, pageProps }) {

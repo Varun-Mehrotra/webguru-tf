@@ -1,18 +1,18 @@
 export default [
   {
-    path: 'home',
+    path: 'banner',
     label: 'Home',
   },
   {
-    path: 'feature',
-    label: 'Features',
+    path: 'services',
+    label: 'Services',
   },
   {
-    path: 'pricing',
-    label: 'Pricing',
+    path: 'testimonials',
+    label: 'Testimonials',
   },
   {
-    path: 'testimonial',
-    label: 'Testimonial',
+    path: 'news',
+    label: 'News',
   },
 ];

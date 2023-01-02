@@ -1,87 +1,154 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-import { Container, Grid } from 'theme-ui';
-import SectionHeader from 'components/section-header';
-import FeatureCard from 'components/feature-card.js';
-import Performance from 'assets/feature/performance.svg';
-import Partnership from 'assets/feature/partnership.svg';
-import Subscription from 'assets/feature/subscription.svg';
-import Support from 'assets/feature/support.svg';
+import React, { useRef } from 'react';
+import { Box, Container } from 'theme-ui';
+import BlockTitle from 'components/block-title';
+import Swiper from 'react-id-swiper';
+import { Link } from 'components/link';
 
-const data = [
+import FeatureCard from 'components/feature-card';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
+import featureImage1 from 'assets/tutorial-1-1.png';
+import featureImage2 from 'assets/tutorial-1-2.png';
+import featureImage3 from 'assets/tutorial-1-3.png';
+
+const FeatureData = [
   {
-    id: 1,
-    imgSrc: Performance,
-    altText: 'Fast Performance',
-    title: 'Fast Performance',
-    text:
-      'Let’s just get this out of the way - there will always be a kit version of Edu flow. Paid subscriptions allow us to continue helping learners around the world.',
+    image: featureImage1,
+    title: 'Startups should leverage technical infrastructure to gain competitive edge',
+    comments: '',
+    path: 'https://tech.eu/2022/12/02/startups-should-leverage-technical-infrastructure-to-gain-competitive-edge/',
   },
   {
-    id: 2,
-    imgSrc: Partnership,
-    altText: 'Pro Subscription',
-    title: 'Pro Subscription',
-    text:
-      'We believe it’s important for everyone to have access to software – especially when it comes to digital learning be navigated by keyboard and screen readers.',
+    image: featureImage2,
+    title: '3 actions to optimize infrastructure as code initiatives',
+    comments: '',
+    path: 'https://www.techtarget.com/searchitoperations/opinion/3-actions-to-optimize-infrastructure-as-code-initiatives?amp=1',
   },
   {
-    id: 3,
-    imgSrc: Subscription,
-    altText: 'Partnership deal',
-    title: 'Partnership deal',
-    text:
-      'Let’s just get this out of the way - there will always be a kit version of Edu flow. Paid subscriptions allow us to continue helping learners around the world.',
-  },
-  {
-    id: 4,
-    imgSrc: Support,
-    altText: 'Customer Support',
-    title: 'Customer Support',
-    text:
-      'We believe it’s important for everyone to have access to software – especially when it comes to digital learning be navigated by keyboard and screen readers.',
+    image: featureImage3,
+    title:
+      'Nasdaq to leverage Terraform for Cloud initiatives',
+    comments: '',
+    path: 'https://www.globenewswire.com/news-release/2022/11/22/2561196/0/en/Nasdaq-Leverages-HashiCorp-Solutions-to-Support-Accelerated-Path-to-the-Cloud.html',
   },
 ];
 
-export default function Feature() {
+const Feature = () => {
+  const ref = useRef(null);
+  const goNext = () => {
+    if (ref.current !== null && ref.current.swiper !== null) {
+      ref.current.swiper.slideNext();
+    }
+  };
+
+  const goPrev = () => {
+    if (ref.current !== null && ref.current.swiper !== null) {
+      ref.current.swiper.slidePrev();
+    }
+  };
+  const params = {
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 30,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+      },
+      376: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+      },
+      576: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 0,
+      },
+      768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 30,
+      },
+      992: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 30,
+      },
+      1200: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 30,
+      },
+    },
+  };
   return (
-    <section sx={{ variant: 'section.feature' }}>
+    <Box sx={styles.features} id="news">
       <Container>
-        <SectionHeader
-          slogan="Quality features"
-          title="Amazing useful features"
+        <BlockTitle
+          slogan="What's Hot"
+          title="News in our Domain"
+          styles={styles.blockTitle}
         />
 
-        <Grid sx={styles.grid}>
-          {data.map((item) => (
-            <FeatureCard
-              key={item.id}
-              src={item.imgSrc}
-              alt={item.altText}
-              title={item.title}
-              text={item.text}
-            />
+        <Swiper {...params} ref={ref}>
+          {FeatureData.map((feature, index) => (
+            <div className="swiper-slider" key={`feature-card-key${index}`}>
+              <FeatureCard
+                image={feature.image}
+                title={feature.title}
+                commentCount={feature.comments}
+                path={feature.path}
+              />
+            </div>
           ))}
-        </Grid>
+        </Swiper>
+        <Box sx={styles.carouselBtns}>
+          <button aria-label="left btn" onClick={goPrev}>
+            <FaLongArrowAltLeft />
+          </button>
+          <button onClick={goNext} aria-label="right btn">
+            <FaLongArrowAltRight />
+          </button>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
-}
+};
+
+export default Feature;
 
 const styles = {
-  grid: {
-    pt: [0, null, null, null, null, null, 2],
-    px: [5, 6, 0, null, 7, 8, 7],
-    gridGap: [
-      '40px 0',
-      null,
-      '45px 30px',
-      null,
-      '60px 50px',
-      '70px 50px',
-      null,
-      '80px 90px',
-    ],
-    gridTemplateColumns: ['repeat(1,1fr)', null, 'repeat(2,1fr)'],
+  blockTitle: {
+    textAlign: 'center',
+  },
+  features: {
+    pt: ['80px', null, null, null, null, null, '120px'],
+    pb: ['80px', null, null, null, '170px'],
+    backgroundColor: '#F8FAFC',
+    '.swiper-slider': {
+      overflowY: 'visible',
+      overflowX: 'hidden',
+    },
+  },
+  carouselBtns: {
+    display: ['flex', null, null, null, null, 'none'],
+    justifyContent: 'center',
+    alignItems: 'center',
+    button: {
+      border: 'none',
+      outline: 'none',
+      backgroundColor: 'transparent',
+      fontSize: [2, null, 4, null, 5],
+      color: '#BBC7D7',
+      width: 'auto',
+      padding: [0],
+      margin: '0 5px',
+      mt: '15px',
+      transition: '500ms',
+      '&:hover, &:active, &:focus': {
+        color: 'primary',
+      },
+    },
   },
 };
