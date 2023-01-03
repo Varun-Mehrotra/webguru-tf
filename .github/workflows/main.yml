@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: 18
       
+      - run: export NODE_OPTIONS=--openssl-legacy-provider
+
       - name: install
         run: npm ci
 
