@@ -23,14 +23,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      
-      - run: export NODE_OPTIONS=--openssl-legacy-provider
 
       - name: install
         run: npm ci
 
       - name: build  
         run: npm run build
+        env: 
+          NODE_OPTIONS: "--openssl-legacy-provider"
       
       - name: export
         run: npm run export 
